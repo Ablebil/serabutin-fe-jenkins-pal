@@ -21,7 +21,11 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                    npm ci
+                    docker run --rm \
+                        -v "$PWD":/app \
+                        -w /app \
+                        node:24-alpine \
+                        npm ci
                 '''
             }
         }
@@ -29,7 +33,11 @@ pipeline {
         stage('Lint') {
             steps {
                 sh '''
-                    npm run lint
+                    docker run --rm \
+                        -v "$PWD":/app \
+                        -w /app \
+                        node:24-alpine \
+                        npm run lint
                 '''
             }
         }
@@ -37,7 +45,11 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 sh '''
-                    npm run build
+                    docker run --rm \
+                        -v "$PWD":/app \
+                        -w /app \
+                        node:24-alpine \
+                        npm run build
                 '''
             }
         }
