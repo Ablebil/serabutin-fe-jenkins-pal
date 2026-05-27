@@ -1,0 +1,11 @@
+.git
+.gitignore
+node_modules
+dist
+Dockerfile
+docker-compose*.yaml
+README.md
+.github
+.env
+.env.*
+!.env.production
