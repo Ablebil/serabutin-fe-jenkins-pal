@@ -1,12 +1,13 @@
 services:
   frontend:
-    image: ablebil/serabutin-fe-jenkins-pal:latest
+    image: ${DOCKER_IMAGE}:${DOCKER_TAG}
     container_name: serabutin-ui
     restart: unless-stopped
     ports:
       - "3000:80"
     healthcheck:
-      test: [ "CMD", "wget", "--spider", "-q", "http://localhost" ]
+      test: [ "CMD", "wget", "--spider", "-q", "http://127.0.0.1:80" ]
       interval: 30s
       timeout: 10s
       retries: 3
+      start_period: 10s
