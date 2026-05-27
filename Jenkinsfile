@@ -19,38 +19,41 @@ pipeline {
         }
 
         stage('Install Dependencies') {
+            agent {
+                docker {
+                    image 'node:24-alpine'
+                    reuseNode true
+                }
+            }
+
             steps {
-                sh '''
-                    docker run --rm \
-                        -v "$PWD":/app \
-                        -w /app \
-                        node:24-alpine \
-                        npm ci
-                '''
+                sh 'npm ci'
             }
         }
 
         stage('Lint') {
+            agent {
+                docker {
+                    image 'node:24-alpine'
+                    reuseNode true
+                }
+            }
+
             steps {
-                sh '''
-                    docker run --rm \
-                        -v "$PWD":/app \
-                        -w /app \
-                        node:24-alpine \
-                        npm run lint
-                '''
+                sh 'npm run lint'
             }
         }
 
         stage('Build Frontend') {
+            agent {
+                docker {
+                    image 'node:24-alpine'
+                    reuseNode true
+                }
+            }
+
             steps {
-                sh '''
-                    docker run --rm \
-                        -v "$PWD":/app \
-                        -w /app \
-                        node:24-alpine \
-                        npm run build
-                '''
+                sh 'npm run build'
             }
         }
 
