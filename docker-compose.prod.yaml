@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: ablebil/serabutin-ui:latest
+    image: ablebil/serabutin-jenkins-pal:latest
     container_name: serabutin-ui
     restart: unless-stopped
     ports:
