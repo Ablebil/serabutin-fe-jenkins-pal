@@ -1,12 +1,6 @@
 # Serabutin Frontend
 
-<div align="center">
-
-### Local Services Marketplace Platform
-
-A modern two-sided marketplace where clients post jobs and workers discover opportunities, place bids, complete work, and build trust through reviews and ratings.
-
-<br/>
+A modern two-sided local services marketplace platform where clients post jobs and workers discover opportunities, place bids, complete work, and build trust through reviews and ratings.
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript)
@@ -18,131 +12,121 @@ A modern two-sided marketplace where clients post jobs and workers discover oppo
 ![Docker](https://img.shields.io/badge/Docker-Deployment-2496ED?logo=docker)
 ![NGINX](https://img.shields.io/badge/NGINX-SPA_Serving-009639?logo=nginx)
 
-</div>
-
 ---
 
-## 📌 Overview
+## Overview
 
 Serabutin is a modern local services marketplace platform built with **React 19**, **TypeScript**, and **Vite**.
 
 The platform connects:
-
-* **Clients** → users who post jobs/tasks
-* **Workers** → users who browse jobs and submit bids
+- **Clients** - users who post jobs/tasks
+- **Workers** - users who browse jobs and submit bids
 
 The application is designed with a scalable feature-first architecture, optimized server-state management, and a production-ready deployment workflow using Docker + NGINX.
 
----
+## Preview
 
-# 📸 Preview
+<img width="1919" height="941" alt="Serabutin Preview" src="https://github.com/user-attachments/assets/2b166d4b-134e-4ecc-9b15-9d3d128d1846" />
 
-<img width="1919" height="941" alt="image" src="https://github.com/user-attachments/assets/2b166d4b-134e-4ecc-9b15-9d3d128d1846" />
+## Features
 
----
+### Core Marketplace Features
+- Authentication & protected routes
+- Client and worker profile management
+- Job posting with budget, location, schedules, and descriptions
+- Advanced job search & filtering
+- Infinite scrolling job discovery
+- Worker bidding system
+- Bid acceptance & cancellation flow
+- Two-way ratings & reviews
+- Regency/District location integration
 
-# ✨ Features
+### Technical Features
+- React 19 + Vite ultra-fast SPA
+- Feature-first scalable architecture
+- TanStack Query server-state caching
+- Zustand persistent client state
+- Token refresh interceptor handling
+- Tailwind CSS v4 design system
+- Shadcn UI component primitives
+- Dockerized deployment
+- NGINX SPA routing fallback
+- TypeScript project references
+- ESLint flat configuration
+- React Compiler enabled
 
-## Core Marketplace Features
+## Requirements
 
-* 🔐 Authentication & protected routes
-* 👤 Client and worker profile management
-* 📌 Job posting with:
+- Node.js >= 20
+- npm or pnpm
+- Docker & Docker Compose (optional, for containerized setup)
 
-  * budget
-  * location
-  * schedules
-  * descriptions
-* 🔎 Advanced job search & filtering
-* ♾ Infinite scrolling job discovery
-* 💰 Worker bidding system
-* ✅ Bid acceptance & cancellation flow
-* ⭐ Two-way ratings & reviews
-* 📍 Regency/District location integration
+## Getting Started
 
----
+### 1. Clone the Repository
 
-## Technical Features
+```bash
+git clone <repository-url>
+cd serabutin-frontend
+```
 
-* ⚡ React 19 + Vite ultra-fast SPA
-* 🧠 Feature-first scalable architecture
-* 🔄 TanStack Query server-state caching
-* 🗂 Zustand persistent client state
-* 🔒 Token refresh interceptor handling
-* 🎨 Tailwind CSS v4 design system
-* 🧩 Shadcn UI component primitives
-* 🐳 Dockerized deployment
-* 🌐 NGINX SPA routing fallback
-* 📦 TypeScript project references
-* 🧹 ESLint flat configuration
-* 🚀 React Compiler enabled
+### 2. Install Dependencies
 
----
+```bash
+npm install
+```
 
-# 🏗 Architecture Overview
+### 3. Setup Environment
 
-## Frontend Architecture
+Create a `.env` file in the root directory:
+
+```bash
+cp .env.example .env
+```
+
+Configure the required environment variables in `.env`. See [Environment Variables](#environment-variables) for details.
+
+### 4. Start Development Server
+
+```bash
+npm run dev
+```
+
+The application will be running locally managed by Vite.
+
+## Running with Docker
+
+### Build Container
+```bash
+docker compose build
+```
+
+### Run Application
+```bash
+docker compose up -d
+```
+Application will be exposed on `http://localhost:3000`.
+
+## Environment Variables
+
+| Variable       | Description          |
+| -------------- | -------------------- |
+| `VITE_API_URL` | Backend API base URL |
+
+## Architecture Overview
 
 The application follows a **feature-first architecture** to improve scalability, maintainability, and team collaboration.
 
-```text
-src/
-├── features/
-│   ├── auth/
-│   ├── jobs/
-│   └── user/
-│
-├── shared/
-│   ├── api/
-│   ├── components/
-│   ├── hooks/
-│   ├── layouts/
-│   ├── lib/
-│   └── ui/
-│
-├── routes/
-└── App.tsx
-```
+### Architecture Principles
+- **Feature Isolation:** Each feature owns its components, hooks, services, schemas, stores, and utilities. This minimizes coupling between domains.
+- **Shared Infrastructure:** Reusable abstractions are centralized under `src/shared`.
+- **State Separation:** Server state is managed by TanStack React Query, while client state is managed by Zustand.
 
----
+## Routing System
 
-## Architecture Principles
-
-### Feature Isolation
-
-Each feature owns:
-
-* components
-* hooks
-* services
-* schemas
-* stores
-* utilities
-
-This minimizes coupling between domains.
-
-### Shared Infrastructure
-
-Reusable abstractions are centralized under `src/shared`.
-
-### State Separation
-
-* **Server state** → TanStack React Query
-* **Client state** → Zustand
-
----
-
-# 🧭 Routing System
-
-Routing is composed in `App.tsx` using:
-
-* React Router v7
-* Nested layouts
-* Protected routes
-* Authentication guards
+Routing is composed in `App.tsx` using React Router v7, nested layouts, protected routes, and authentication guards.
 
 Example flow:
-
 ```text
 Public Routes
 ├── Login
@@ -157,9 +141,7 @@ Protected Routes
 └── Profiles
 ```
 
----
-
-# 🔄 Data Flow
+## Data Flow
 
 ```text
 UI Components
@@ -175,71 +157,22 @@ React Query Cache
 UI Revalidation
 ```
 
----
+## State Management
 
-# 🧠 State Management
+### Server State — TanStack Query
+Used for API fetching, caching, pagination, synchronization, and background refetching.
+Optimizations include `keepPreviousData`, query invalidation, cursor pagination, and cache-aware updates.
 
-## Server State — TanStack Query
+### Client State — Zustand
+Used for authentication session, persisted auth state, review drafts, and lightweight UI state.
 
-Used for:
+## Styling System
 
-* API fetching
-* caching
-* pagination
-* synchronization
-* background refetching
+Serabutin uses **Tailwind CSS v4** with a CSS-first configuration and design tokens in `App.css`. It also utilizes **Shadcn UI** primitives and custom semantic palettes to ensure consistent UI, scalable theming, and a fast styling workflow.
 
-Optimizations:
+## Authentication Flow
 
-* `keepPreviousData`
-* query invalidation
-* cursor pagination
-* cache-aware updates
-
----
-
-## Client State — Zustand
-
-Used for:
-
-* authentication session
-* persisted auth state
-* review drafts
-* lightweight UI state
-
----
-
-# 🎨 Styling System
-
-Serabutin uses:
-
-* **Tailwind CSS v4**
-* CSS-first configuration
-* design tokens in `App.css`
-* **Shadcn UI** primitives
-* custom semantic palettes
-
-Benefits:
-
-* consistent UI
-* scalable theming
-* reusable components
-* fast styling workflow
-
----
-
-# 🔐 Authentication Flow
-
-Authentication includes:
-
-* Login
-* Registration
-* Verification
-* Session hydration
-* Route protection
-* Token refresh handling
-
-## Flow Summary
+Authentication includes Login, Registration, Verification, Session hydration, Route protection, and Token refresh handling.
 
 ```text
 User Login
@@ -253,13 +186,9 @@ Automatic Token Refresh
 Protected Routes Accessible
 ```
 
----
+## API & Services
 
-# 🌐 API & Services
-
-The frontend communicates through an Axios-based service layer.
-
-## Main Service Domains
+The frontend communicates through an Axios-based service layer. The app handles `snake_case` to `camelCase` transformations at API boundaries for cleaner frontend conventions.
 
 | Domain         | Purpose                |
 | -------------- | ---------------------- |
@@ -269,101 +198,34 @@ The frontend communicates through an Axios-based service layer.
 | User Service   | Profiles & user data   |
 | Review Service | Ratings & reviews      |
 
----
+## Performance Optimizations
 
-## API Transformation Strategy
+- React Query intelligent caching
+- Infinite scrolling with IntersectionObserver
+- Cursor-based pagination
+- React Compiler support
+- Lightweight Zustand stores
+- Feature-based lazy scalability
+- Optimized SPA deployment via NGINX
 
-The app handles:
-
-* `snake_case`
-* `camelCase`
-
-transformations at API boundaries for cleaner frontend conventions.
-
----
-
-# ⚡ Performance Optimizations
-
-## Implemented Optimizations
-
-* React Query intelligent caching
-* Infinite scrolling with IntersectionObserver
-* Cursor-based pagination
-* React Compiler support
-* Lightweight Zustand stores
-* Feature-based lazy scalability
-* Optimized SPA deployment via NGINX
-
----
-
-# 📁 Folder Structure
+## Project Structure
 
 ```text
-src/
-├── features/        # Business domains
-├── shared/          # Shared infrastructure
-├── routes/          # Routing definitions
-├── assets/          # Static assets
-├── App.tsx          # Root application
-└── main.tsx         # Application entry
+serabutin-frontend/
+├── src/
+│   ├── components/ui/           # UI component primitives
+│   ├── features/                # Business domains
+│   ├── shared/                  # Shared infrastructure
+│   ├── App.css                  # Global styles and Tailwind directives
+│   ├── App.tsx                  # Root application
+│   └── main.tsx                 # Application entry
+├── docker-compose.prod.yaml     # Production deployment compose
+├── Dockerfile                   # Multi-stage NGINX build
+├── Jenkinsfile                  # Jenkins CI/CD pipeline configuration
+└── package.json                 # Scripts and dependencies
 ```
 
----
-
-# ⚙ Environment Variables
-
-Create a `.env` file:
-
-```env
-VITE_API_URL=http://localhost:8080/api
-```
-
-| Variable       | Description          |
-| -------------- | -------------------- |
-| `VITE_API_URL` | Backend API base URL |
-
----
-
-# 🚀 Installation
-
-## Prerequisites
-
-* Node.js 20+
-* npm / pnpm
-* Docker (optional)
-
----
-
-## Clone Repository
-
-```bash
-git clone <repository-url>
-cd serabutin-frontend
-```
-
----
-
-## Install Dependencies
-
-```bash
-npm install
-```
-
----
-
-# 💻 Local Development
-
-Start development server:
-
-```bash
-npm run dev
-```
-
-Vite will run the application locally.
-
----
-
-# 📜 Available Scripts
+## Available Scripts
 
 | Script            | Description              |
 | ----------------- | ------------------------ |
@@ -372,56 +234,50 @@ Vite will run the application locally.
 | `npm run preview` | Preview production build |
 | `npm run lint`    | Run ESLint               |
 
----
+## CI/CD Pipeline
 
-# 🏭 Production Build
+This project uses **Jenkins** as the automation server to handle Continuous Integration and Continuous Delivery (CI/CD). Deployments are triggered automatically via GitHub Webhooks with no manual deployment needed.
 
-Build the application:
-
-```bash
-npm run build
-```
-
-Preview build locally:
-
-```bash
-npm run preview
-```
-
----
-
-# 🐳 Docker Deployment
-
-## Build Container
-
-```bash
-docker compose build
-```
-
-## Run Application
-
-```bash
-docker compose up -d
-```
-
-Application will be exposed on:
+### Architecture Overview
 
 ```text
-http://localhost:3000
+Developer Push
+      │
+      ▼
+   GitHub (webhook trigger)
+      │
+      ▼
+Jenkins Server (self-hosted VM)
+  ├── Checkout source code
+  ├── Install dependencies & Lint
+  ├── Build React app (Vite)
+  ├── Build multi-stage Docker image
+  ├── Push image to Docker Hub
+  └── Deploy to Production Server via SSH
+            │
+            ▼
+     Production Server
+  ├── Pull latest Docker image
+  └── docker compose up -d
 ```
 
----
+### Pipeline Stages (`Jenkinsfile`)
 
-## Deployment Stack
+| Stage | Description |
+| ----- | ----------- |
+| `Checkout` | Pulls the latest source code from GitHub |
+| `Install Dependencies` | Runs `npm ci` inside a `node:24-alpine` Docker agent |
+| `Lint` | Runs `npm run lint` to enforce code quality |
+| `Build Frontend` | Compiles the React app with Vite (`npm run build`) |
+| `Docker Login` | Authenticates to Docker Hub |
+| `Build Image` | Builds a multi-stage image (Node builder → NGINX static server) |
+| `Push Image` | Pushes the image to Docker Hub |
+| `Copy Compose Files` | SCPs `docker-compose.prod.yaml` to the production server |
+| `Deploy` | SSHes into the production server, pulls the new image, and runs `docker compose up -d` |
 
-* Docker
-* NGINX
-* SPA fallback routing
-* Static asset serving
+*Note: Unlike the backend pipeline, the frontend deployment only handles container orchestration and static asset serving via NGINX without executing any database migrations.*
 
----
-
-# 🧩 Suggested Architecture Diagram
+## Architecture Diagram
 
 ```text
 ┌──────────────────┐
@@ -443,60 +299,40 @@ http://localhost:3000
 └──────────────────┘
 ```
 
----
+## Developer Experience
 
-# 🛠 Developer Experience
+**Included Tooling:**
+- ESLint flat config
+- TypeScript project references
+- React Compiler
+- Feature-first organization
+- Shared infrastructure abstractions
+- Typed service architecture
 
-## Included Tooling
+## Scalability Considerations
 
-* ESLint flat config
-* TypeScript project references
-* React Compiler
-* Feature-first organization
-* Shared infrastructure abstractions
-* Typed service architecture
+The codebase is structured for long-term scalability through feature modularization, isolated business domains, reusable shared infrastructure, centralized API communication, predictable state separation, and a scalable routing structure.
 
----
+## Known Gaps and Future Improvements
 
-# 📈 Scalability Considerations
+**Current missing areas:**
+- Automated testing
+- Error boundary implementation
+- `.env.example`
+- Monitoring/logging integration
 
-The codebase is structured for long-term scalability through:
+**Potential future improvements:**
+- Unit and E2E testing
+- Analytics
+- Role-based access control
+- Real-time notifications
+- WebSocket support
 
-* feature modularization
-* isolated business domains
-* reusable shared infrastructure
-* centralized API communication
-* predictable state separation
-* scalable routing structure
-
----
-
-# ⚠ Known Gaps / Future Improvements
-
-Current missing areas:
-
-* ❌ Automated testing
-* ❌ CI/CD pipeline
-* ❌ Error boundary implementation
-* ❌ `.env.example`
-* ❌ Monitoring/logging integration
-
-Potential future improvements:
-
-* unit testing
-* E2E testing
-* analytics
-* role-based access control
-* real-time notifications
-* websocket support
-
----
-
-# 🤝 Contribution Guide
+## Contribution Guide
 
 Contributions are welcome.
 
-## Recommended Workflow
+### Recommended Workflow
 
 ```bash
 # Create branch
@@ -512,9 +348,4 @@ git push origin feature/my-feature
 Then open a Pull Request.
 
 ---
-
-<div align="center">
-
-### Longlife learner
-
-</div>
+Longlife learner
